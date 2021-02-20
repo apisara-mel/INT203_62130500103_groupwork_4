@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Vue Js - HelloWorld App</title>
+
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <!-- Using via Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- https://tailwindcss.com/docs/installation -->
+    <!-- Using Tailwind via CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body class="bg-yellow-200" id="app">
+
+    <div class="text-center my-8">
+        <h1 class="text-3xl">Photo Gallery ( {{ countUndone }} )</h1>
+    </div>
+
+    <div class="flex justify-center w-full mb-8">
+        <div v-if="isHidden == false">
+            <button v-on:click="isHidden = !isHidden" :class="{show: isHidden == false}">
+                <span class="material-icons p-1 rounded-sm ">
+                    search
+                </span>
+            </button>
+        </div>
+
+        <div v-else>
+            <input
+                class="ml-2 p-1 w-80 placeholder-gray-500 placeholder-opacity-50 focus:outline-none text-black rounded"
+                type="text" placeholder="Please enter text for searching photos" v-model="text">
+            <button class="ml-2 p-1 rounded-lg focus:outline-none bg-green-500" v-on:click="isHidden = !isHidden">Cancel
+            </button>
+        </div>
+    </div>
+
+    <div class="flex justify-center grid-cols-3 font-mono ">
+        <div v-if="searching.length !== 0" v-for="(task,index) in searching" :class="{done: task.done}">
+            <img :src="task.img" class="w-52 h-64 rounded-lg mx-20">
+            <p class="my-4 text-center text-xl text-blue-600">{{ task.content }}</p>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded mt-2 mb-8 mx-20"
+                @click="toggleDone(index)">
+                Like
+            </button>
+            <span class="material-icons ml-12 text-blue-700 align-middle" v-show="task.done">
+                thumb_up
+            </span>
+        </div>
+        <div v-else>
+            <h2 class="mb-2 text-2xl font-mono text-gray-800">No Photos.</h2>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
