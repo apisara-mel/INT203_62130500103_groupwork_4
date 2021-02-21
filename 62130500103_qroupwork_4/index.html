@@ -63,14 +63,21 @@
         </div>
 
         <!-- popup -->
-        <div v-if="exit" class="">
-            <img class="my-auto" :src="imgExit" alt="popupImage">
-            <div class="inline-flex justify-center">
-                <button @click="exitPopup" class="hover:bg-red-700 bg-red-400">
-                    Close
-                </button>
+
+        <div v-if="exit" class="flex items-center fixed w-96 h-96 shadow-md bg-white  ">
+            <div class="">
+                <div>
+                    <img class="my-auto w-96" :src="imgExit" alt="popupImage">
+                </div>
+                <div class=" flex justify-center ">
+                    <button @click="exitPopup" class="hover:bg-red-500 bg-red-400 my-8 text-white rounded px-2">
+                        Close
+                    </button>
+                </div>
             </div>
         </div>
+
+
 
     </div>
 
