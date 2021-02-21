@@ -2,40 +2,60 @@ const app = {
     data() {
         return {
             tasks: [{
+                    tag: '1',
                     img: 'img/1.jpg',
                     content: 'Pink Pelicans',
-                    done: false
+                    done: false,
+                    show: false
                 },
                 {
+                    tag: '2',
                     img: 'img/2.jpg',
                     content: 'France',
-                    done: false
+                    done: false,
+                    show: false
                 },
                 {
+                    tag: '3',
                     img: 'img/3.jpg',
                     content: 'Bali',
-                    done: false
+                    done: false,
+                    show: false
                 }
             ],
-                text: '',
-                isHidden: false,
+            text: '',
+            isHidden: false,
+            exit: false,
+            imgExit: '',
+
         }
     },
 
     methods: {
         toggleDone(index) {
-            this.tasks[index].done = !this.tasks[index].done
+            //this.tasks[index].done = !this.tasks[index].done
+            for (let index = 0; index <= this.tasks.length; index++) {
+                const element = this.tasks[index];
+                if (element.tag == tag) {
+                    this.imgExit.tag = element.img
+                    element.done = !element.done;
+                    if(element.done){
+                        this.exit = !this.exit;
+                    }
+                    break
+                }
+            }
         },
-        search() {
-            this.form.search = !this.form.search;
-        },
+        exitPopup(tag) {
+            this.exit = !this.exit;
+        }
     },
 
     computed: {
         countUndone() {
             return this.tasks.filter(t => t.done).length
         },
-     
+
         searching() {
             return this.tasks.filter(showResult => {
                 return showResult.content.toLowerCase().includes(this.text.toLowerCase())
