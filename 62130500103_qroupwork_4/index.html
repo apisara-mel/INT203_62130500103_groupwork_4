@@ -48,7 +48,9 @@
 
     <div class="flex justify-center grid-cols-3 font-mono ">
         <div v-if="searching.length !== 0" v-for="(task,index) in searching" :class="{done: task.done}" :key="task.tag">
-            <img :src="task.img" class="w-52 h-64 rounded-lg mx-20 hover:scale-110 motion-reduce:transform-none transform" @click="toggleDone(task.tag)">
+            <img :src="task.img"
+                class="w-52 h-64 rounded-lg mx-20 hover:scale-110 delay-150 motion-reduce:transform-none transform"
+                @click="toggleDone(task.tag)">
             <p class="my-4 text-center text-xl text-blue-600">{{ task.content }}</p>
             <button class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded mt-2 mb-8 mx-20"
                 @click="like(task.tag)">
@@ -63,23 +65,23 @@
         </div>
 
         <!-- popup -->
-
-        <div v-if="exit" class="flex items-center fixed w-96 h-96 ">
-            <div class="">
-                <div>
-                    <img class="my-auto w-96" :src="imgExit" alt="popupImage">
+        <div v-if="exit" class="mt-10 fixed ">
+            <div class="bg-blue-200 bg-opacity-95 w-screen px-20 flex-row">
+                <div class="flex justify-center">
+                    <img class="h-96 mt-8" :src="imgExit" alt="popupImage">
                 </div>
-                <div class=" flex justify-center ">
-                    <button @click="exitPopup" class="hover:bg-red-500 bg-red-400 my-8 text-white rounded px-2">
-                        Close
-                    </button>
+                <div class="flex justify-center">
+                    <div class="">
+                        <button @click="exitPopup" class="hover:bg-red-600 bg-red-500 my-8 text-white rounded px-2">
+                            Close
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
-
-
-
     </div>
+
 
     <script src="main.js"></script>
 </body>
