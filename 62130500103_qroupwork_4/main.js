@@ -32,22 +32,31 @@ const app = {
     },
 
     methods: {
-        toggleDone(index) {
+        toggleDone(tag) {
             //this.tasks[index].done = !this.tasks[index].done
             for (let index = 0; index <= this.tasks.length; index++) {
                 const element = this.tasks[index];
                 if (element.tag == tag) {
-                    this.imgExit.tag = element.img
-                    element.done = !element.done;
-                    if(element.done){
-                        this.exit = !this.exit;
-                    }
+                    this.imgExit = element.img
+                    this.exit = !this.exit;
                     break
                 }
             }
         },
         exitPopup(tag) {
             this.exit = !this.exit;
+        },
+
+        like(tag) {
+            //this.tasks[tag].done = !this.tasks[tag].done
+            for (let index = 0; index < this.tasks.length; index++) {
+                const element = this.tasks[index];
+                if (element.tag == tag) {
+                    element.done = !element.done;
+
+                    break
+                }
+            }
         }
     },
 
