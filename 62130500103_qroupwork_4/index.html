@@ -61,18 +61,18 @@
             </span>
         </div>
         <div v-else>
-            <h2 class="mb-2 text-2xl font-mono text-gray-800">No Photos.</h2>
+            <h2 class="px-12 py-8 text-2xl font-mono text-gray-800 bg-white rounded-lg">No Photos.</h2>
         </div>
 
         <!-- popup -->
-        <div v-if="exit" class="mt-10 fixed ">
-            <div class="bg-blue-200 bg-opacity-95 w-screen px-20 flex-row">
+        <div v-if="exit" class="mt-10 fixed w-screen">
+            <div class="bg-blue-200 bg-opacity-95 px-20 flex-row">
                 <div class="flex justify-center">
-                    <img class="h-96 mt-8" :src="imgExit" alt="popupImage">
+                    <img class="h-96 m-8 border-4 border-red-900 rounded-lg object-scale-down" :src="imgExit">
                 </div>
                 <div class="flex justify-center">
                     <div class="">
-                        <button @click="exitPopup" class="hover:bg-red-600 bg-red-500 my-8 text-white rounded px-2">
+                        <button @click="exitPopup" class="hover:bg-red-600 bg-red-500 mb-8 text-white rounded px-2">
                             Close
                         </button>
                     </div>
